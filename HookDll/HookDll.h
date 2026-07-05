@@ -9,7 +9,7 @@
 #endif // _MSC_VER > 1000
 
 #ifndef __AFXWIN_H__
-	#error include 'stdafx.h' before including this file for PCH
+#error include 'stdafx.h' before including this file for PCH
 #endif
 
 #include "resource.h"		// main symbols
@@ -24,23 +24,14 @@ class CHookDllApp : public CWinApp
 public:
 	CHookDllApp();
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CHookDllApp)
-	public:
+public:
 	virtual BOOL InitInstance();
 	virtual int ExitInstance();
-	//}}AFX_VIRTUAL
-
-	//{{AFX_MSG(CHookDllApp)
-		// NOTE - the ClassWizard will add and remove member functions here.
-		//    DO NOT EDIT what you see in these blocks of generated code !
-	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
 
-enum HOOK_TYPE_e
-{ 
+enum E_HOOK_TYPE
+{
 	HT_UNKNOWN = 0,
 	HT_MEMORY = 1,
 	HT_GDI = 2,
@@ -48,15 +39,15 @@ enum HOOK_TYPE_e
 	HT_NOTHING = 4
 };
 
-extern HOOK_TYPE_e g_HookType;
+extern E_HOOK_TYPE g_HookType;
 extern int g_StackDepth;
 
-enum HANDLE_TYPES_e
+enum E_HANDLE_TYPES
 {
 	TYPE_EVENT_HANDLE,
 	TYPE_MUTEX_HANDLE,
 	TYPE_SEMAPHOR_HANDLE,
-    TYPE_CRITICAL_SECTION_HANDLE,
+	TYPE_CRITICAL_SECTION_HANDLE,
 	TYPE_WAIT_TIMER_HANDLE,
 	TYPE_FILE_HANDLE,
 	TYPE_TOKEN_HANDLE,
@@ -69,7 +60,7 @@ enum HANDLE_TYPES_e
 	TYPE_MAIL_SLOT_HANDLE,
 	TYPE_PIPE_HANDLE,
 	TYPE_REGISTRY_HANDLE,
-    TYPE_TIMER_QUEUE,
+	TYPE_TIMER_QUEUE,
 	TYPE_UNKNOWN
 };
 
@@ -78,8 +69,8 @@ void EmptyLeakMap();
 void HookMemAlloc();
 void HookGDIAlloc();
 void HookHandleAlloc();
-void CreateCallStack( LPVOID lpMem, SIZE_T dwBytes );
-void RemovCallStack( LPVOID lpMem );
+void CreateCallStack(LPVOID lpMem, SIZE_T dwBytes);
+void RemovCallStack(LPVOID lpMem);
 
 
 #ifdef HOOK_DLL_SRC
@@ -88,8 +79,8 @@ void RemovCallStack( LPVOID lpMem );
 #define HOOK_DLL_EXPORT extern "C" __declspec(dllimport)
 #endif
 
-HOOK_DLL_EXPORT bool IsLeakDetected(void* pObject );
-HOOK_DLL_EXPORT void SetHookType(HOOK_TYPE_e eType );
+HOOK_DLL_EXPORT bool IsLeakDetected(void* pObject);
+HOOK_DLL_EXPORT void SetHookType(E_HOOK_TYPE eType);
 
 /////////////////////////////////////////////////////////////////////////////
 

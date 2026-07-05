@@ -8,7 +8,7 @@ class EditEx : public CEdit
 	DECLARE_DYNAMIC(EditEx)
 
 public:
-	EditEx(CWnd* pWndMsg );
+	EditEx(CWnd* pWndMsg);
 	virtual ~EditEx();
 
 protected:

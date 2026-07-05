@@ -66,6 +66,7 @@ END
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\Injector.ico"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
@@ -82,19 +83,20 @@ BEGIN
     LTEXT           "Send in the Comments and Bugs to\n\nNaveen (nave432@gmail.com )",IDC_STATIC,17,13,165,26
 END
 
-IDD_INJECTOR_DIALOG DIALOGEX 0, 0, 302, 228
-STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+IDD_INJECTOR_DIALOG DIALOGEX 0, 0, 585, 228
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "Injector"
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
-    PUSHBUTTON      "Close",IDCANCEL,242,7,38,15
-    PUSHBUTTON      "Inject",IDC_BUTTON1,54,7,38,15
-    PUSHBUTTON      "Dump",IDC_BUTTON2,101,7,38,15
-    PUSHBUTTON      "Reset",IDC_BUTTON3,148,7,38,15
-    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_SINGLESEL | WS_BORDER | WS_TABSTOP,7,30,288,191
-    PUSHBUTTON      "Refresh",IDC_BUTTON4,7,7,38,15
-    PUSHBUTTON      "PDB Info",IDC_BUTTON5,195,7,38,15
+    PUSHBUTTON      "&Refresh",IDC_BUTTON4,7,7,34,19
+    PUSHBUTTON      "&Inject",IDC_BUTTON1,41,7,34,19
+    PUSHBUTTON      "&Dump",IDC_BUTTON2,75,7,34,19
+    PUSHBUTTON      "&Reset",IDC_BUTTON3,109,7,34,19
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_SINGLESEL | WS_BORDER | WS_TABSTOP,7,30,571,191
+    PUSHBUTTON      "&PDB",IDC_BUTTON5,143,7,34,19
+    DEFPUSHBUTTON   "&Find",IDC_FIND,177,7,34,19
+    EDITTEXT        IDC_EDT_FIND,211,9,82,14,ES_AUTOHSCROLL | ES_WANTRETURN | NOT WS_BORDER,WS_EX_STATICEDGE
 END
 
 
@@ -155,12 +157,31 @@ BEGIN
     IDD_INJECTOR_DIALOG, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 295
+        RIGHTMARGIN, 578
         TOPMARGIN, 7
         BOTTOMMARGIN, 221
     END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_INJECTOR_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 100,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0
+END
 
 
 /////////////////////////////////////////////////////////////////////////////

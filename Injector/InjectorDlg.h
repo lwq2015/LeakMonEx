@@ -56,6 +56,7 @@ protected:
     bool m_bSortAscending;
 
 public:
+	afx_msg void OnBnClickedFind();
 };
 
 //{{AFX_INSERT_LOCATION}}
