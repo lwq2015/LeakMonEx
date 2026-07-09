@@ -2858,8 +2858,28 @@ void DumpLeak()
 		return;
 	}
 
-	constexpr TCHAR kFilter[] = _T("Dump file(*.txt)|*.txt|Any file(*.*)|*.*||");
-	CFileDialog dlg(FALSE, _T(".txt"), _T("Dump.txt"), OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, kFilter);
+	CTime tmNow = CTime::GetCurrentTime();
+	CString szTimeNow = tmNow.Format(_T(" %y%m%dT%H%M%S"));
+	CString szDumpName = _T("Dump.txt");
+	switch (g_HookType)
+	{
+	case HT_MEMORY:
+		szDumpName.Format(_T("Dump-Memory_%s.log"), szTimeNow);
+		break;
+	case HT_GDI:
+		szDumpName.Format(_T("Dump-GDI_%s.log"), szTimeNow);
+		break;
+	case HT_HANDLE:
+		szDumpName.Format(_T("Dump-Handle_%s.log"), szTimeNow);
+		break;
+	default:
+		szDumpName.Format(_T("Dump_%s.log"), szTimeNow);
+		break;
+	}
+
+
+	constexpr TCHAR kFilter[] = _T("Dump file(*.log)|*.log|Dump file(*.txt)|*.txt|Dump file(*.ini)|*.ini|Any file(*.*)|*.*||");
+	CFileDialog dlg(FALSE, _T(".log"), szDumpName, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, kFilter);
 	if (IDOK != dlg.DoModal())
 	{
 		return;
