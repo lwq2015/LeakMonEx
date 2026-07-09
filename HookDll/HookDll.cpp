@@ -2780,7 +2780,7 @@ CString GetGDIHandleType(HGDIOBJ hObj, SIZE_T nType)
 		csType = _T("Region");
 		break;
 	default:
-		csType = _T("Unknown");
+		csType.Format(_T("Unknown(%u)"), dwType);
 		break;
 	}
 	return csType;
